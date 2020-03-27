@@ -1,0 +1,58 @@
+$height = 32px;
+$background = white;
+$active-bg = white;
+$border-color = #999;
+$border-color-hover = #666;
+$background-active = #eee
+
+.wButton {
+  font-size: $font-size;
+  background: $background;
+  padding: 0.3em 1em;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  display: inline-flex;
+  vertical-align: middle;
+   margin: 0 5px;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border: 1px solid $border-color-hover;
+  }
+
+  &:active {
+    background: $background-active;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .content {
+    order: 2;
+    width: auto
+  }
+
+}
+
+
+
+.iconleft {
+  .icon {
+  order:1;  
+  }
+  .content {
+    order: 2;
+  }
+}
+
+.iconright {
+ 
+   .icon {
+  order:2; 
+  }
+  .content {
+    order: 1;
+  }
+}
