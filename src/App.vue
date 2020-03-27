@@ -1,6 +1,7 @@
 <template>
   <div class="content">
-    <Button></Button>
+    <!-- <Button></Button> -->
+    <wSwiper></wSwiper>
   </div>
 </template>
 <script>
@@ -20,8 +21,5 @@ export default {
 </script>
 
 <style lang="stylus">
-.content {
-  width: 25%;
-  margin: 10% auto;
-}
+
 </style>
