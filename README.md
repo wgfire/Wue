@@ -1,4 +1,7 @@
 # wue
+基于vue.js的轻量UI库
++ button组件
++ swiper 轮播组件
 
 ## Project setup
 ```
@@ -15,15 +18,8 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
