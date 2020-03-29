@@ -1,9 +1,16 @@
 <template>
   <div class="swiper-item">
     <ul class="swiper-ul">
-      <li v-for="(value,index) in pre" :key="index" :class="index==0?'leave':'enter'">
-        <img :src="value" />
-      </li>
+      <transition :name="`slide-${type}`">
+        <li v-if="show" :key="1">
+          <img :src="imgArr[nextIndex]" />
+        </li>
+      </transition>
+      <transition :name="`slide-${type}-old`">
+        <li v-if="!show" :key="2">
+          <img :src="imgArr[nextIndex]" />
+        </li>
+      </transition>
     </ul>
   </div>
 </template>
@@ -15,53 +22,45 @@ export default {
   props: {
     imglist: {
       type: Array
+    },
+    type: {
+      type: String,
+      default: "trans"
     }
   },
   data() {
     return {
       imgArr: this.imglist,
-      listIndex: 0, //当前的索引
-      pre: [], // 向上遍历的数组
-      next: [], // 向下遍历的数组
-      count: 0,
-      start: false
+      nextIndex: 0, //下一个的索引值
+      show: true,
+      timeOut: null // 定时器
     };
   },
   watch: {},
   computed: {},
   methods: {
-    changeIndex(index) {
-      console.log(index, this.listIndex);
-      this.getPre(index);
-      this.listIndex = index;
-      this.start = false
+    async changeIndex(index) {
+      await this.moveImg(index);
     },
-    getPre(index) {
-      if (index < 0) {
-        index = this.imgArr.length - 1;
-      } else if (index > this.imgArr.length - 1) {
-        index = 0;
-      }
-      this.pre = [this.imgArr[this.listIndex],this.imgArr[index]];
-      console.log("翻页", this.pre);
-     
-    },
-    getNext(index) {
-      this.next = [this.imgArr[this.listIndex], this.imgArr[index]];
-      console.log("向上翻页", this.next);
+    moveImg(index) {
+      this.show = false; // 切换
+      setTimeout(() => {
+        this.show = true;
+        this.nextIndex = index;
+      }, 10);
     }
   },
+  beforeCreate() {},
   created() {},
   mounted() {
-    this.pre = this.imgArr.slice(0, 2);
-    console.log(this.imgArr, this.pre);
+    console.log(this);
   }
 };
 </script>
 <style lang="stylus" scoped>
 .swiper-item {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 20px);
   z-index: 9999;
   display: flex;
 }
@@ -87,36 +86,41 @@ export default {
   z-index: 99;
 }
 
-// .swiper-ul li:not(:first-child) {
-// right: -65%;
-// }
-.leave {
-  animation: leave 2s infinite;
+.slide-trans-enter {
+  opacity: 0.3;
+  transform: translateX(50%);
 }
 
-@keyframes leave {
-  to {
-    transform: translateX(-100%);
-  }
-
-  from {
-    transform: translateX(10%);
-  }
+.slide-trans-enter-active {
+  transition: all 1s ease-in;
 }
 
-.enter {
-  animation: enter 3s infinite;
-  animation-delay 1s
-  right: 0px;
+.slide-trans-old-leave {
+  opacity: 0.3;
 }
 
-@keyframes enter {
-  to {
-    transform: translateX(10%);
-  }
+.slide-trans-old-leave-active {
+  opacity: 0;
+  transition: all 2s;
+  transform: translateX(-100%);
+}
 
-  from {
-    transform: translateX(100%);
-  }
+.slide-down-enter {
+  opacity: 0.3;
+  transform: translateY(-50%);
+}
+
+.slide-down-enter-active {
+  transition: all 1s ease-in;
+}
+
+.slide-down-old-leave {
+  opacity: 0.3;
+}
+
+.slide-down-old-leave-active {
+  opacity: 0;
+  transition: all 2s;
+  transform: translateY(100%);
 }
 </style>

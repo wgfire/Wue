@@ -1,18 +1,17 @@
 <template>
   <div class="content">
     <!-- <Button></Button> -->
-    <wSwiper></wSwiper>
+   
+      <wSwiper></wSwiper>
+  
   </div>
 </template>
 <script>
-  import Button from "../test/Button";
+import Button from "../test/Button";
 export default {
-
   name: "App",
   data() {
-    return {
-     
-    };
+    return {};
   },
   components: {
     Button
@@ -21,5 +20,6 @@ export default {
 </script>
 
 <style lang="stylus">
-
+.content
+ width 800px
 </style>
