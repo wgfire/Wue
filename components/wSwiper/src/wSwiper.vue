@@ -23,8 +23,8 @@ export default {
   data() {
     return {
       imglist: ["/1.jpg", "/2.jpg", "/1.jpg", "/2.jpg"],
-      listIndex: 0,
-      timeOut: null
+      listIndex: 0, // 当前移动的索引值
+      timeOut: null // 定时器
     };
   },
   watch: {},
