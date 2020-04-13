@@ -1,6 +1,6 @@
 <template>
   <div class="wSwiper">
-    <wSwiperItem :imglist="imglist" ref="wSwiperItem" id="wSwiperid" ></wSwiperItem>
+    <wSwiperItem :imglist="imglist" ref="wSwiperItem" id="wSwiperid"  v-debounce="{'mouseover':stopRun,'mouseleave':()=>{autoRun()}}" ></wSwiperItem>
     <div class="dot">
       <ul>
         <li
@@ -35,20 +35,18 @@ export default {
       this.listIndex = index;
       this.stopRun(); // 先停止
       await this.$refs.wSwiperItem.changeIndex(index);
-
       this.autoRun(index);
     },
-    autoRun(index) {
+    autoRun() {
       console.log("运行");
       this.timeOut && this.stopRun();
       let self = this;
-      this.listIndex = index || this.listIndex;
+      //this.listIndex = index || this.listIndex;
       this.timeOut = setInterval(async () => {
         this.listIndex++;
         if (this.listIndex > this.imglist.length - 1) {
           this.listIndex = 0;
         }
-        console.log(this.listIndex);
         await self.$refs.wSwiperItem.changeIndex(this.listIndex);
       }, 2500);
     },
@@ -59,18 +57,20 @@ export default {
       this.timeOut = null;
     }
   },
-  created() {},
+  created() {
+    console.log(this);
+    
+  },
   mounted() {
     // 节流一下
-    wSwiperid.addEventListener(
-      "mouseover",
-      this.$tool.debounce(this.stopRun.bind(this), 2000, true)
-    );
-    wSwiperid.addEventListener(
-      "mouseleave",
-      this.$tool.debounce(this.autoRun.bind(this, this.listIndex), 2000, true)
-    );
-    console.log(this);
+    // wSwiperid.addEventListener(
+    //   "mouseover",
+    //   this.$tool.debounce(this.stopRun.bind(this), 2000, true)
+    // );
+    // wSwiperid.addEventListener(
+    //   "mouseleave",
+    //   this.$tool.debounce(this.autoRun.bind(this, this.listIndex), 2000, true)
+    // );
     
     this.autoRun(0);
   }
