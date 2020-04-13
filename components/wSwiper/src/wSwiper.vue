@@ -1,6 +1,13 @@
 <template>
   <div class="wSwiper">
-    <wSwiperItem :imglist="imglist" ref="wSwiperItem" id="wSwiperid"  v-debounce="{'mouseover':stopRun,'mouseleave':()=>{autoRun()}}" ></wSwiperItem>
+    <w-debounce :time="1000" events="mouseover">
+      <wSwiperItem
+        :imglist="imglist"
+        ref="wSwiperItem"
+        id="wSwiperid"
+        v-on:mouseover.native="autoRun"
+      ></wSwiperItem>
+    </w-debounce>
     <div class="dot">
       <ul>
         <li
@@ -47,7 +54,7 @@ export default {
         if (this.listIndex > this.imglist.length - 1) {
           this.listIndex = 0;
         }
-        await self.$refs.wSwiperItem.changeIndex(this.listIndex);
+        self.$refs.wSwiperItem.changeIndex(this.listIndex);
       }, 2500);
     },
 
@@ -59,7 +66,6 @@ export default {
   },
   created() {
     console.log(this);
-    
   },
   mounted() {
     // 节流一下
@@ -71,7 +77,7 @@ export default {
     //   "mouseleave",
     //   this.$tool.debounce(this.autoRun.bind(this, this.listIndex), 2000, true)
     // );
-    
+
     this.autoRun(0);
   }
 };
