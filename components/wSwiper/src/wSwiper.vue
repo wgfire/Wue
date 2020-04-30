@@ -1,13 +1,14 @@
 <template>
   <div class="wSwiper">
-    <w-debounce :time="1000" events="mouseover">
+    <!-- <w-debounce :time="1000" events="mouseover"> -->
       <wSwiperItem
         :imglist="imglist"
         ref="wSwiperItem"
         id="wSwiperid"
-        v-on:mouseover.native="autoRun"
+       
+        v-debounce="{'mouseover':stopRun,'mouseleave':autoRun}"
       ></wSwiperItem>
-    </w-debounce>
+    <!-- </w-debounce> -->
     <div class="dot">
       <ul>
         <li
@@ -26,10 +27,14 @@ export default {
   name: "wSwiper",
   components: {},
   provide: {},
-  props: {},
+  props: {
+    imglist:{
+      type:Array
+    }
+  },
   data() {
     return {
-      imglist: ["/1.jpg", "/2.jpg", "/1.jpg", "/2.jpg"],
+    
       listIndex: 0, // 当前移动的索引值
       timeOut: null // 定时器
     };

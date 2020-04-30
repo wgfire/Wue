@@ -1,7 +1,7 @@
 import tool from "../static/lib/tool";
 
 var directivesObj = {
-    'debounce': {
+    'debounce': { // 防抖指定
         bind: function (el, binding, vnode, oldVnode) {
             console.log('插入到元素', binding);
             let typeList = Object.keys(binding.value)
@@ -13,7 +13,7 @@ var directivesObj = {
             })
         },
         update: function (params) {
-            //console.log('更新了')
+            console.log('更新了')
         }
 
     }

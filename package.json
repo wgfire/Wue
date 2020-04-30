@@ -5,7 +5,7 @@
   "author":"wgfire",
   "main": "package/index.umd.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lib": "vue-cli-service build --target lib --name index --dest package components/index.js"
   },

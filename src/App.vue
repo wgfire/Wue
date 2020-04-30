@@ -1,9 +1,8 @@
 <template>
   <div class="content">
     <!-- <Button></Button> -->
-   
-      <wSwiper></wSwiper>
-  
+
+    <wSwiper :imglist="imglist"></wSwiper>
   </div>
 </template>
 <script>
@@ -11,7 +10,9 @@ import Button from "../test/Button";
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      imglist: ["/1.jpg", "/2.jpg", "/1.jpg", "/2.jpg"]
+    };
   },
   components: {
     Button
