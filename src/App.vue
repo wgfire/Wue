@@ -1,26 +1,26 @@
 <template>
   <div class="content">
     <!-- <Button></Button> -->
-
-    <wSwiper :imglist="imglist"></wSwiper>
+    <wLaypage />
+    <!-- <Swiper/> -->
   </div>
 </template>
 <script>
 import Button from "../test/Button";
+import Swiper from "../test/swiper";
 export default {
   name: "App",
   data() {
-    return {
-      imglist: ["/1.jpg", "/2.jpg", "/1.jpg", "/2.jpg"]
-    };
+    return {};
   },
   components: {
-    Button
+    Button,
+    Swiper
   }
 };
 </script>
 
 <style lang="stylus">
 .content
- width 800px
+ width 100%
 </style>

@@ -3,9 +3,10 @@ import wIcon from "./icon/index";
 import wButtonGroup from './wButtonGroup/index'
 import {wSwiper,wSwiperItem  } from "./wSwiper/index";
 import wDebounce from "./wDebounce/index";
+import wLaypage from "./wLaypage/index";
 
 // 存储组件列表
-const components = [wButton, wIcon, wButtonGroup,wSwiper,wSwiperItem,wDebounce];
+const components = [wButton, wIcon, wButtonGroup,wSwiper,wSwiperItem,wDebounce,wLaypage];
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 function install(Vue) {
   // 遍历注册全局组件
