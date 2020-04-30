@@ -19,9 +19,11 @@
             >
               <h2>{{ item.pageTitle }}</h2>
               <div class="vireinli">
-                <li v-for="(items, index) in item.content" :key="index">
-                  {{ items }}
+                <li  v-for="(items, index) in item.content?item.content:item.showImg" :key="index">
+                  <span v-if="item.content">{{ items }}</span>
+                  <img  v-else :src="items" alt="">
                 </li>
+                 
               </div>
             </div>
           </ul>
@@ -54,7 +56,7 @@ export default {
     return {
       ulStyle: {
         transition: "transform .7s ease-in-out",
-        transform: "translateY(-369px)"
+        transform: "translateY(0px)"
       },
       index: 0,
       rendData: {
@@ -62,8 +64,8 @@ export default {
         page: [
           {
             pageTitle: "第一页",
-            content: ["1", "2"],
-            index: 0
+            index: 0,
+            showImg:['/1.jpg','/2.jpg']
           },
           {
             pageTitle: "第二页",
