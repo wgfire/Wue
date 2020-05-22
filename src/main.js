@@ -11,6 +11,7 @@ import Initdirectives from "./static/directives";
 Vue.prototype.$tool = tool
 Vue.config.productionTip = false
 Vue.use(wVue)
+tool.getIconfont('//at.alicdn.com/t/font_1478618_8p9zpqha323.js')
 Initdirectives(Vue) // 注册全局指令
 new Vue({
   render: h => h(App)

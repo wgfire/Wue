@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <!-- <Button></Button> -->
-    <wLaypage />
+    <Button></Button>
+    <!-- <wLaypage /> -->
     <!-- <Swiper/> -->
   </div>
 </template>

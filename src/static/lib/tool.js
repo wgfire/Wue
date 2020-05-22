@@ -32,5 +32,12 @@ export default {
                 }, wait);
             }
         }
+    },
+    getIconfont (url){
+        let header = document.getElementsByTagName("head")[0];
+        let script = document.createElement("script");
+        script.src = url;
+        script.defer = true;
+        header.appendChild(script);
     }
 }

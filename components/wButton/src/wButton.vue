@@ -3,8 +3,8 @@
     <!-- <svg class="icon" v-if="icon && !loading ">
       <use :xlink:href="`#w-${icon}`"></use>
     </svg>-->
-    <w-icon :icon="icon" v-if="icon && !loading"></w-icon>
-    <w-icon icon="jiazai" v-if="loading" class="loading icon"></w-icon>
+    <w-icon :icon="icon" v-if="icon && !loading" url="//at.alicdn.com/t/font_1478618_8p9zpqha323.js"></w-icon>
+    <w-icon :icon="icon" v-if="loading" class="loading icon" ></w-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -32,6 +32,9 @@ export default {
   },
   data() {
     return {};
+  },
+  created () {
+   // alert('xx')
   }
 };
 </script>

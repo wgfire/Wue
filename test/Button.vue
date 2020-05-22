@@ -1,6 +1,6 @@
 <template>
   <div class="test_button">
-       <w-button icon="qiyijiandangjie" iconpostion="iconleft">建军节</w-button>
+       <w-button icon="caidan" iconpostion="iconleft">建军节</w-button>
     <w-button
       icon="qiyijiandangjie"
       iconpostion="iconright"
