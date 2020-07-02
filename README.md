@@ -2,6 +2,9 @@
 基于vue.js的轻量UI库
 + button组件
 + swiper 轮播组件
++ 分页组件
++ icon组件
++ 防抖组件
 
 ## Project setup
 ```
